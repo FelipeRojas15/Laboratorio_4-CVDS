@@ -17,7 +17,9 @@ public class PowerBonusScore implements GameScore{
      * @param incorrectCount, Entero
      * @return entero con puntaje total mayor a cero
      */
-    public int calculateScore(int correctCount, int incorrectCount){
+    public int calculateScore(int correctCount, int incorrectCount)throws HangmanException{
+        if(correctCount < 0 || incorrectCount < 0){
+            throw new HangmanException(HangmanException.NUMERO_INVALIDO);}
         return 0;
-    }    
+    }
 }

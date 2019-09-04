@@ -15,9 +15,15 @@ public class BonusScore implements GameScore{
      * @pos numero entre 0 e i*10 - donde i es la longitud de la palabra 
      * @param correctCount, Entero 
      * @param incorrectCount, Entero
-     * @return entero con puntaje total mayor a cero
+     * @throws hangman.model.HangmanException Si el numero ingresado es Invalido
+     * @return entero con puntaje total, mayor a cero
      */
-    public int calculateScore(int correctCount, int incorrectCount){
+    @Override
+    public int calculateScore(int correctCount, int incorrectCount) throws HangmanException{
+        if(correctCount < 0 || incorrectCount < 0){
+            throw new HangmanException(HangmanException.NUMERO_INVALIDO);}
         return 0;
     }
+    
+    
 }
