@@ -22,7 +22,11 @@ public class OriginalScore implements GameScore{
         if(correctCount < 0 || incorrectCount < 0){
             throw new HangmanException(HangmanException.NUMERO_INVALIDO);}
         
-        return 0;
+        puntaje-=(incorrectCount*10);        
+        if (puntaje<0){
+            puntaje = 0;
+        }        
+        return puntaje;
     }
     
 }

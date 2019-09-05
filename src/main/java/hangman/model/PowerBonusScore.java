@@ -18,8 +18,19 @@ public class PowerBonusScore implements GameScore{
      * @return entero con puntaje total mayor a cero
      */
     public int calculateScore(int correctCount, int incorrectCount)throws HangmanException{
+        int puntaje = 0;
         if(correctCount < 0 || incorrectCount < 0){
             throw new HangmanException(HangmanException.NUMERO_INVALIDO);}
-        return 0;
+        
+        puntaje = (puntaje+((int)Math.pow(5,correctCount)))-(incorrectCount*8);
+        if (puntaje > 500){
+            puntaje = 500;
+        }
+        
+        if (puntaje < 0){
+            puntaje = 0;
+        }
+        
+        return puntaje; 
     }
 }
