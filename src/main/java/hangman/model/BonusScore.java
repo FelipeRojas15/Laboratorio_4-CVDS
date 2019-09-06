@@ -19,13 +19,12 @@ public class BonusScore implements GameScore{
      * @return entero con puntaje total, mayor a cero
      */
     @Override
-    public int calculateScore(int correctCount, int incorrectCount) throws HangmanException{
+    public int calculateScore(int correctCount, int incorrectCount) throws HangmanException{       
         int puntaje = 0;
         if(correctCount < 0 || incorrectCount < 0){
             throw new HangmanException(HangmanException.NUMERO_INVALIDO);}
-        puntaje = (puntaje+(correctCount*10))-(incorrectCount*5);
-        if (puntaje <0){
-            puntaje = 0;
+        if (correctCount*10>incorrectCount*5){
+            puntaje=correctCount*10-(incorrectCount*5);
         }
         return puntaje;
     }

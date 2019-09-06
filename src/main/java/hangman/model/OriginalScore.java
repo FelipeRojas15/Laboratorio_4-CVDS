@@ -5,6 +5,8 @@
  */
 package hangman.model;
 
+import com.google.inject.Inject;
+
 /**
  *
  * @author 2153043
@@ -16,13 +18,13 @@ public class OriginalScore implements GameScore{
      * @param correctCount, Entero 
      * @param incorrectCount, Entero
      * @return entero con puntaje total mayor a cero
-     */
+     */     
     public int calculateScore(int correctCount, int incorrectCount)throws HangmanException{
-        int puntaje = 100;
+        
         if(correctCount < 0 || incorrectCount < 0){
             throw new HangmanException(HangmanException.NUMERO_INVALIDO);}
         
-        puntaje-=(incorrectCount*10);        
+        int puntaje=(100-incorrectCount*10);
         if (puntaje<0){
             puntaje = 0;
         }        

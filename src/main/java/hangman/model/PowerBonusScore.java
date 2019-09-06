@@ -17,12 +17,11 @@ public class PowerBonusScore implements GameScore{
      * @param incorrectCount, Entero
      * @return entero con puntaje total mayor a cero
      */
-    public int calculateScore(int correctCount, int incorrectCount)throws HangmanException{
-        int puntaje = 0;
+    public int calculateScore(int correctCount, int incorrectCount)throws HangmanException{        
         if(correctCount < 0 || incorrectCount < 0){
             throw new HangmanException(HangmanException.NUMERO_INVALIDO);}
         
-        puntaje = (puntaje+((int)Math.pow(5,correctCount)))-(incorrectCount*8);
+        int puntaje = (((int)Math.pow(5,correctCount)))-(incorrectCount*8);
         if (puntaje > 500){
             puntaje = 500;
         }

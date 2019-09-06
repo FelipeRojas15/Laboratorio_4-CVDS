@@ -5,6 +5,7 @@
  */
 package hangman.model.dictionary;
 
+import com.google.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 

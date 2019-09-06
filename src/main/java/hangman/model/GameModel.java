@@ -22,8 +22,10 @@ public class GameModel {
     private int incorrectCount;
     private int correctCount;
     private LocalDateTime dateTime;
+    private GameScore typeScore;
     private int gameScore;
     private int[] lettersUsed;
+    private int incCero;
     
     
     private HangmanDictionary dictionary;
@@ -34,25 +36,28 @@ public class GameModel {
     
     
    
-    public GameModel(HangmanDictionary dictionary){
+    public GameModel(HangmanDictionary dictionary,GameScore altScore) throws HangmanException{
         //this.dictionary = new EnglishDictionaryDataSource();
         this.dictionary=dictionary;
+        this.typeScore=altScore;
+        incCero=0;
         randomWord = selectRandomWord();
         randomWordCharArray = randomWord.toCharArray();
         incorrectCount = 0;
         correctCount = 0;
-        gameScore = 100;
+        gameScore=altScore.calculateScore(correctCount, incorrectCount);
         
     }
     
     //method: reset
     //purpose: reset this game model for a new game
-    public void reset(){
+    public void reset() throws HangmanException{
         randomWord = selectRandomWord();
         randomWordCharArray = randomWord.toCharArray();
         incorrectCount = 0;
         correctCount = 0;
-        gameScore = 100;
+        gameScore=typeScore.calculateScore(correctCount, incorrectCount);
+        incCero=0;
     }
 
     //setDateTime
@@ -64,7 +69,7 @@ public class GameModel {
     //method: makeGuess
     //purpose: check if user guess is in string. Return a
     // list of positions if character is found in string
-    public ArrayList<Integer> makeGuess(String guess){
+    public ArrayList<Integer> makeGuess(String guess) throws HangmanException{
         char guessChar = guess.charAt(0);
         ArrayList<Integer> positions = new ArrayList<>();
         for(int i = 0; i < randomWordCharArray.length; i++){
@@ -74,10 +79,15 @@ public class GameModel {
         }
         if(positions.size() == 0){
             incorrectCount++;
-            gameScore -= 10;
+            
+            if (gameScore==0){
+                incCero+=1;
+            }            
         } else {
-            correctCount += positions.size();
-        }
+            correctCount += positions.size();            
+        }        
+        gameScore = typeScore.calculateScore(correctCount, incorrectCount-incCero);
+        //incCero=0;
         return positions;
         
     }

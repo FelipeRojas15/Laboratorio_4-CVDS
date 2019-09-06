@@ -4,6 +4,7 @@ import org.junit.Assert;
 import hangman.model.*;
 import org.junit.Test;
 
+
 public class GameScoreTest {
  /**   
   * OriginalScore:
@@ -35,9 +36,8 @@ public class GameScoreTest {
     public void deberiaSerCeroElScoreOriginalScore() throws HangmanException {
         OriginalScore puntaje = new OriginalScore();
         
-        Assert.assertEquals(0,puntaje.calculateScore(5,100));
-        Assert.assertEquals(0,puntaje.calculateScore(0,10));
-        Assert.assertEquals(0,puntaje.calculateScore(0,0));
+        Assert.assertEquals(0,puntaje.calculateScore(5,100));       
+        Assert.assertEquals(0,puntaje.calculateScore(0,10));        
         
     }
     @Test 
@@ -177,8 +177,8 @@ public class GameScoreTest {
     public void deberiaDarUnPuntajeMayorACero() throws HangmanException{
         PowerBonusScore puntaje = new PowerBonusScore ();
         Assert.assertEquals(17,puntaje.calculateScore(2,1));
-        Assert.assertEquals(500,puntaje.calculateScore(3,2));
-        Assert.assertEquals(500,puntaje.calculateScore(4,20));
+        Assert.assertEquals(109,puntaje.calculateScore(3,2));
+        Assert.assertEquals(465,puntaje.calculateScore(4,20));
     }
     @Test 
     public void deberiaTenerPuntajeEnCeroPowerBonusScore() throws HangmanException{

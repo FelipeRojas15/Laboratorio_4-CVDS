@@ -5,6 +5,7 @@
  */
 package hangman.model.dictionary;
 
+import com.google.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  *
  * @author 2106913
  */
+
 public class FrenchDictionaryDataSource extends HangmanDictionary {
 
     static private String words[] = {
